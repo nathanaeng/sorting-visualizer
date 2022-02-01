@@ -4,7 +4,7 @@ import Header from './components/Header';
 function App() {
 
   let algorithm;
-  let size;
+  let size = 5;
   
   // randomly generated array with values between 0-100
   let array = Array.from({length: 5}, () => Math.floor(Math.random() * 100));
