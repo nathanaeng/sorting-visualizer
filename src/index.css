@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.form-select {
+  border: none !important;
+  background-color: transparent;
+  box-shadow: none !important;
+  cursor: pointer;
+  width: auto;
+}
+
+.refresh {
+  cursor: pointer;
+}
