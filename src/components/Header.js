@@ -2,7 +2,7 @@ import React from 'react';
 import Select from './Select';
 import { GrRefresh } from 'react-icons/gr';
 
-const Header = () => {
+const Header = ({ updateArray }) => {
     const algorithms = ["Selection Sort", "Bubble Sort", "Insertion Sort", "Quick Sort", "Merge Sort", "Heap Sort", "Counting Sort", "Radix Sort"];
     const sizes = ["Size 5", "Size 10", "Size 25", "Size 50", "Size 100"];
 
@@ -15,7 +15,7 @@ const Header = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav ms-auto">
-            <div className="nav-link refresh"><GrRefresh /></div>
+            <div className="nav-link refresh" onClick={updateArray}><GrRefresh /></div>
             <div className="algorithms"><Select label="Choose Algorithm" options={algorithms}/></div>
             <div className="sizes"><Select options={sizes}/></div>
         </div>
