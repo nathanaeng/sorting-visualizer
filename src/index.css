@@ -13,11 +13,12 @@ code {
 }
 
 .form-select {
-  border: none !important;
+  border: none;
   background-color: transparent;
   box-shadow: none !important;
   cursor: pointer;
   width: auto;
+  margin-top: 0.2rem;
 }
 
 .refresh {

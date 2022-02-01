@@ -16,8 +16,8 @@ const Header = () => {
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav ms-auto">
             <div className="nav-link refresh"><GrRefresh /></div>
-            <Select label="Choose Algorithm" options={algorithms}/>
-            <Select options={sizes}/>
+            <div className="algorithms"><Select label="Choose Algorithm" options={algorithms}/></div>
+            <div className="sizes"><Select options={sizes}/></div>
         </div>
         </div>
     </div>
