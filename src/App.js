@@ -2,13 +2,14 @@ import { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import Header from './components/Header';
 import Controls from './components/Controls';
+import MyArray from './components/MyArray';
 import Bar from './components/Bar';
 import SelectionSort from './algorithms/SelectionSort';
 
 function App() {
   let algorithm;
   let size = 5;
-  
+
   // randomly generated array with values between 0-100
   let array = Array.from({length: 5}, () => Math.floor(Math.random() * 100));
 
@@ -52,6 +53,7 @@ function App() {
     <div>
       <Header updateArray={updateArray}/>
       <div className="array" style={{wordWrap: "break-word"}}></div>
+      <MyArray arr={array} size={size}/>
       <Controls />
       <div className="algorithm">No algorithm selected</div>
     </div>

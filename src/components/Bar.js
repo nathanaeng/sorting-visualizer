@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Bar = ({ value }) => {
+const Bar = ({ value, size }) => {
     return(
-        <div className="bar" style={{height: `${4*value}px`, width:`20px`}}></div>
+        <div className="bar" style={{height: `${4*value}px`, width:`${size}%`}}></div>
     );
 };
 

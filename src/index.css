@@ -59,3 +59,9 @@ code {
 .bar {
   background-color: red;
 }
+
+.array-grid {
+  width: 75%;
+  display: grid;
+  transform: scaleY(-1);
+}
