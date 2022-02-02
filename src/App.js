@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Header from './components/Header';
 import Controls from './components/Controls';
 import MyArray from './components/MyArray';
+import Algorithm from './components/Algorithm';
 import SelectionSort from './algorithms/SelectionSort';
 
 function App() {
@@ -28,10 +29,6 @@ function App() {
 
   function updateArray() {
     setArray(Array.from({length: size}, () => Math.floor(Math.random() * 100)));
-    // console.log(array);
-
-    // Refresh algorithm component
-    updateAlgorithm();
   }
 
   useEffect(() => {
@@ -39,7 +36,7 @@ function App() {
   }, [size]);
 
   useEffect(() => {
-    console.log(array);
+    updateAlgorithm(document.querySelector('.algorithms').firstElementChild.value);
   }, [array]);
 
   return (
@@ -49,7 +46,10 @@ function App() {
         <MyArray arr={array} size={size}/>
       </div>
       <Controls />
-      <div className="algorithm">No algorithm selected</div>
+      <div className="algorithm">
+        No algorithm selected
+        {/* <SelectionSort arr={array}/> */}
+      </div>
     </div>
   );
 }
