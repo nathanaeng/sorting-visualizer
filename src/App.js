@@ -1,4 +1,4 @@
-import { useEffect, useState, setState } from 'react';
+import { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import Header from './components/Header';
 import Controls from './components/Controls';
@@ -6,13 +6,9 @@ import MyArray from './components/MyArray';
 import SelectionSort from './algorithms/SelectionSort';
 
 function App() {
-  let algorithm;
-
+  // randomly generated array with values between 0-100
   const [array, setArray] = useState(Array.from({length: 5}, () => Math.floor(Math.random() * 100)));
   const [size, setSize] = useState(5);
-
-  // randomly generated array with values between 0-100
-  // let array = Array.from({length: 5}, () => Math.floor(Math.random() * 100));
 
   function updateAlgorithm(algorithm) {
     // Unmount previous algorithm component being rendered
@@ -41,6 +37,10 @@ function App() {
   useEffect(() => {
     updateArray();
   }, [size]);
+
+  useEffect(() => {
+    console.log(array);
+  }, [array]);
 
   return (
     <div>
