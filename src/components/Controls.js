@@ -6,11 +6,11 @@ import { BsFillSkipStartFill, BsFillSkipEndFill } from 'react-icons/bs'
 const Controls = () => {
   return(
     <div className="center">
-    <div className="controls">
-        <button className="prev"><BsFillSkipStartFill style={{fontSize: "40px"}}/></button>
-        <button className="play"><FaPlay style={{fontSize: "25px"}}/></button>
-        <button className="next"><BsFillSkipEndFill style={{fontSize: "40px"}}/></button>
-    </div>
+        <div className="controls">
+            <button className="prev"><BsFillSkipStartFill style={{fontSize: "40px"}}/></button>
+            <button className="play"><FaPlay style={{fontSize: "25px"}}/></button>
+            <button className="next"><BsFillSkipEndFill style={{fontSize: "40px"}}/></button>
+        </div>
     </div>
   );
 };
