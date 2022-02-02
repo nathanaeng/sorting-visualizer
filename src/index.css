@@ -24,3 +24,38 @@ code {
 .refresh {
   cursor: pointer;
 }
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(3, rf);
+  width: 300px;
+  margin-top: 200px;
+  margin-bottom: 50px;
+}
+
+.prev {
+  border: none;
+  background-color: transparent;
+  grid-column: 1;
+}
+
+.play {
+  border: none;
+  background-color: transparent;
+  grid-column: 2;
+}
+
+.next {
+  border: none;
+  background-color: transparent;
+  grid-column: 3;
+}
+
+.bar {
+  background-color: red;
+}
