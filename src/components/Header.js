@@ -1,10 +1,22 @@
 import React from 'react';
 import Select from './Select';
 import { GrRefresh } from 'react-icons/gr';
+import { useEffect } from 'react/cjs/react.development';
 
-const Header = ({ updateArray }) => {
+const Header = ({ updateArray, updateAlgorithm, updateSize }) => {
     const algorithms = ["Selection Sort", "Bubble Sort", "Insertion Sort", "Quick Sort", "Merge Sort", "Heap Sort", "Counting Sort", "Radix Sort"];
     const sizes = ["Size 5", "Size 10", "Size 25", "Size 50", "Size 100"];
+
+    useEffect(() => {
+        document.querySelector('.algorithms').firstElementChild.addEventListener('change', e => {
+            let algorithm = e.target.value;
+            updateAlgorithm(algorithm);
+          });
+      
+        document.querySelector('.sizes').firstElementChild.addEventListener('change', e => {
+            updateSize(Number(e.target.value.split(' ')[1]));
+        });
+    });
 
     return(
     <nav className="navbar navbar-expand-sm navbar-light bg-light">

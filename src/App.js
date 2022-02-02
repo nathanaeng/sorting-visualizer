@@ -1,35 +1,20 @@
-import { useEffect } from 'react';
+import { useEffect, useState, setState } from 'react';
 import ReactDOM from 'react-dom';
 import Header from './components/Header';
 import Controls from './components/Controls';
 import MyArray from './components/MyArray';
-import Bar from './components/Bar';
 import SelectionSort from './algorithms/SelectionSort';
 
 function App() {
   let algorithm;
-  let size = 5;
+
+  const [array, setArray] = useState(Array.from({length: 5}, () => Math.floor(Math.random() * 100)));
+  const [size, setSize] = useState(5);
 
   // randomly generated array with values between 0-100
-  let array = Array.from({length: 5}, () => Math.floor(Math.random() * 100));
+  // let array = Array.from({length: 5}, () => Math.floor(Math.random() * 100));
 
-  useEffect(() => {
-    // Display array
-    document.querySelector('.array').innerHTML = `<h1>${array}</h1>`;
-    
-    document.querySelector('.algorithms').firstElementChild.addEventListener('change', e => {
-      algorithm = e.target.value;
-      updateAlgorithm();
-      console.log(algorithm);
-    });
-
-    document.querySelector('.sizes').firstElementChild.addEventListener('change', e => {
-      size = Number(e.target.value.split(' ')[1]);
-      updateArray();
-    });
-  });
-
-  function updateAlgorithm() {
+  function updateAlgorithm(algorithm) {
     // Unmount previous algorithm component being rendered
     ReactDOM.unmountComponentAtNode(document.querySelector('.algorithm'));
     switch(algorithm) {
@@ -41,19 +26,28 @@ function App() {
     }
   }
 
+  function updateSize(n) {
+    setSize(n);
+  }
+
   function updateArray() {
-    array = Array.from({length: size}, () => Math.floor(Math.random() * 100));
-    document.querySelector('.array').innerHTML = `<h1>${array}</h1>`;
+    setArray(Array.from({length: size}, () => Math.floor(Math.random() * 100)));
+    // console.log(array);
 
     // Refresh algorithm component
     updateAlgorithm();
   }
 
+  useEffect(() => {
+    updateArray();
+  }, [size]);
+
   return (
     <div>
-      <Header updateArray={updateArray}/>
-      <div className="array" style={{wordWrap: "break-word"}}></div>
-      <MyArray arr={array} size={size}/>
+      <Header updateArray={updateArray} updateAlgorithm={updateAlgorithm} updateSize={updateSize}/>
+      <div className="array">
+        <MyArray arr={array} size={size}/>
+      </div>
       <Controls />
       <div className="algorithm">No algorithm selected</div>
     </div>
