@@ -50,7 +50,6 @@ function App() {
         <MyArray arr={array} size={size}/>
       </div>
       <Controls />
-      {/* <div className="algorithm-root"><Algorithm name={algorithm} arr={array} render={renderArray}/></div> */}
       <Algorithm name={algorithm} arr={array} render={renderArray}/>
     </div>
   );

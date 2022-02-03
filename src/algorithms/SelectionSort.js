@@ -1,15 +1,9 @@
 import React from 'react';
 import { useEffect } from 'react';
+import { swap } from './swap';
 
 const SelectionSort = ({ arr, render }) => {
   let dur = 100;
-  // console.log(arr);
-
-  function swap(arr, xp, yp) {
-    let temp = arr[xp];
-    arr[xp] = arr[yp];
-    arr[yp] = temp;
-  }
 
   async function selectionSort(arr) {
     for(let i=0; i<arr.length-1; i++) {
@@ -20,9 +14,9 @@ const SelectionSort = ({ arr, render }) => {
         }
       }
 
+      // Delay swap animation
       await new Promise(resolve => setTimeout(resolve, dur));
       swap(arr, minIdx, i);
-      // console.log(arr);
       render(arr);
     }
   }
@@ -34,8 +28,18 @@ const SelectionSort = ({ arr, render }) => {
   });
 
   return(
-    <div>
-      <h1>Selection Sort</h1>
+    <div className="center">
+      <div className="description-container">
+        <div className="name">Selection Sort</div>
+        <div className="description">
+          Selection sort is an in-place sorting algorithm which maintains 2 partitions: unsorted and sorted. Selection sort repeatedly finds the minimum element from the unsorted partition and puts it in the leftmost position (assuming ascending-order) of the sorted partition by swapping.
+        </div>
+        <div className="complexity">Average time complexity: O(n<sup>2</sup>)</div>
+        <div className="complexity">Worst-case time complexity: O(n<sup>2</sup>)</div>
+        <div className="complexity">Best-case time complexity: O(n<sup>2</sup>)</div>
+        <div className="complexity">Worse-case space complexity: O(1)</div>
+        <div className="description-bottom"></div>
+      </div>
     </div>
   );
 };
