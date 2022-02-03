@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
 import Header from './components/Header';
 import Controls from './components/Controls';
 import MyArray from './components/MyArray';
 import Algorithm from './components/Algorithm';
-import SelectionSort from './algorithms/SelectionSort';
 
 function App() {
   const [array, setArray] = useState(Array.from({length: 5}, () => Math.floor(Math.random() * 100)));
@@ -27,6 +25,8 @@ function App() {
   // Generate new random array with values between 0-100
   function updateArray() {
     setArray(Array.from({length: size}, () => Math.floor(Math.random() * 100)));
+    updateAlgorithm();
+    updateAlgorithm(algorithm);
   }
 
   // Re-render array during sorting
@@ -50,9 +50,7 @@ function App() {
         <MyArray arr={array} size={size}/>
       </div>
       <Controls />
-      {/* <div className="algorithm">
-        No algorithm selected
-      </div> */}
+      {/* <div className="algorithm-root"><Algorithm name={algorithm} arr={array} render={renderArray}/></div> */}
       <Algorithm name={algorithm} arr={array} render={renderArray}/>
     </div>
   );

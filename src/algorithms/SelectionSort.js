@@ -2,13 +2,16 @@ import React from 'react';
 import { useEffect } from 'react';
 
 const SelectionSort = ({ arr, render }) => {
+  let dur = 100;
+  // console.log(arr);
+
   function swap(arr, xp, yp) {
     let temp = arr[xp];
     arr[xp] = arr[yp];
     arr[yp] = temp;
   }
 
-  function selectionSort(arr) {
+  async function selectionSort(arr) {
     for(let i=0; i<arr.length-1; i++) {
       let minIdx = i;
       for(let j=i+1; j<arr.length; j++) {
@@ -17,9 +20,11 @@ const SelectionSort = ({ arr, render }) => {
         }
       }
 
+      await new Promise(resolve => setTimeout(resolve, dur));
       swap(arr, minIdx, i);
+      // console.log(arr);
+      render(arr);
     }
-    render(arr);
   }
 
   useEffect(() => {
