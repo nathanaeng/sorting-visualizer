@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { swap } from './swap';
 
 const QuickSort = ({ arr, render }) => {
-  let dur = 100;
+  let dur = 30;
 
   async function quickSort(arr, low, high) {
     if(low < high) {

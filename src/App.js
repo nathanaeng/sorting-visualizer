@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
 import Header from './components/Header';
 import Controls from './components/Controls';
 import MyArray from './components/MyArray';
@@ -7,12 +8,15 @@ import Algorithm from './components/Algorithm';
 function App() {
   const [array, setArray] = useState(Array.from({length: 5}, () => Math.floor(Math.random() * 100)));
   const [size, setSize] = useState(5);
-  const [algorithm, setAlgorithm] = useState("No algorithm selected");
+  const [algorithm, setAlgorithm] = useState("Choose Algorithm");
 
   function updateAlgorithm(alg) {
     // Remove previous sort binding
     let play = document.querySelector('.play');
     play.replaceWith(play.cloneNode(true));
+
+    // Remove alert if any
+    ReactDOM.unmountComponentAtNode(document.querySelector('.alert-root'));
 
     setTimeout(() => setAlgorithm(alg), 0);
   }
@@ -47,6 +51,7 @@ function App() {
   return (
     <div>
       <Header updateArray={updateArray} updateAlgorithm={updateAlgorithm} updateSize={updateSize}/>
+      <div className="alert-root"></div>
       <div className="array">
         <MyArray arr={array} size={size}/>
       </div>

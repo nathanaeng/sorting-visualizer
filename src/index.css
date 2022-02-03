@@ -25,6 +25,15 @@ code {
   cursor: pointer;
 }
 
+.alert-root {
+  height: 100px;
+}
+
+.alert {
+  position: relative;
+  top: 20px;
+}
+
 .center {
   display: flex;
   justify-content: center;
@@ -83,6 +92,7 @@ code {
   display: grid;
   grid-template-columns: repeat(2, rf);
   column-gap: 5rem;
+  margin-bottom: 3rem;
 }
 
 .name {
