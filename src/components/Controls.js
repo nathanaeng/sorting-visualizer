@@ -2,7 +2,6 @@ import React from 'react';
 import { FaPlay } from 'react-icons/fa'
 import { BsFillSkipStartFill, BsFillSkipEndFill } from 'react-icons/bs'
 
-
 const Controls = () => {
   return(
     <div className="center">

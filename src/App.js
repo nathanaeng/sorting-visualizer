@@ -7,20 +7,16 @@ import Algorithm from './components/Algorithm';
 import SelectionSort from './algorithms/SelectionSort';
 
 function App() {
-  // randomly generated array with values between 0-100
   const [array, setArray] = useState(Array.from({length: 5}, () => Math.floor(Math.random() * 100)));
   const [size, setSize] = useState(5);
+  const [algorithm, setAlgorithm] = useState("No algorithm selected");
 
-  function updateAlgorithm(algorithm) {
-    // Unmount previous algorithm component being rendered
-    // ReactDOM.unmountComponentAtNode(document.querySelector('.algorithm'));
-    switch(algorithm) {
-      case 'Selection Sort':
-        ReactDOM.render(<SelectionSort arr={array} render={renderArray}/>, document.querySelector('.algorithm'));
-        break;
-      default:
-        document.querySelector('.algorithm').innerHTML = `No algorithm selected`;
-    }
+  function updateAlgorithm(alg) {
+    // Remove previous sort binding
+    let play = document.querySelector('.play');
+    play.replaceWith(play.cloneNode(true));
+
+    setTimeout(() => setAlgorithm(alg), 0);
   }
 
   // Update number of elements in array
@@ -28,7 +24,7 @@ function App() {
     setSize(n);
   }
 
-  // Generate new random array
+  // Generate new random array with values between 0-100
   function updateArray() {
     setArray(Array.from({length: size}, () => Math.floor(Math.random() * 100)));
   }
@@ -43,8 +39,9 @@ function App() {
   }, [size]);
 
   useEffect(() => {
-    updateAlgorithm(document.querySelector('.algorithms').firstElementChild.value);
-  }, [array]);
+    const temp = [...array];
+    renderArray(temp);
+  }, [algorithm]);
 
   return (
     <div>
@@ -53,9 +50,10 @@ function App() {
         <MyArray arr={array} size={size}/>
       </div>
       <Controls />
-      <div className="algorithm">
+      {/* <div className="algorithm">
         No algorithm selected
-      </div>
+      </div> */}
+      <Algorithm name={algorithm} arr={array} render={renderArray}/>
     </div>
   );
 }
