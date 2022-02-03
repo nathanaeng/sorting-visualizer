@@ -13,22 +13,29 @@ function App() {
 
   function updateAlgorithm(algorithm) {
     // Unmount previous algorithm component being rendered
-    ReactDOM.unmountComponentAtNode(document.querySelector('.algorithm'));
+    // ReactDOM.unmountComponentAtNode(document.querySelector('.algorithm'));
     switch(algorithm) {
       case 'Selection Sort':
-        ReactDOM.render(<SelectionSort arr={array}/>, document.querySelector('.algorithm'));
+        ReactDOM.render(<SelectionSort arr={array} render={renderArray}/>, document.querySelector('.algorithm'));
         break;
       default:
         document.querySelector('.algorithm').innerHTML = `No algorithm selected`;
     }
   }
 
+  // Update number of elements in array
   function updateSize(n) {
     setSize(n);
   }
 
+  // Generate new random array
   function updateArray() {
     setArray(Array.from({length: size}, () => Math.floor(Math.random() * 100)));
+  }
+
+  // Re-render array during sorting
+  function renderArray(arr) {
+    setArray(arr);
   }
 
   useEffect(() => {
@@ -48,7 +55,6 @@ function App() {
       <Controls />
       <div className="algorithm">
         No algorithm selected
-        {/* <SelectionSort arr={array}/> */}
       </div>
     </div>
   );

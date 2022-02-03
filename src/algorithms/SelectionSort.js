@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 
-const SelectionSort = ({ arr }) => {
+const SelectionSort = ({ arr, render }) => {
   function swap(arr, xp, yp) {
     let temp = arr[xp];
     arr[xp] = arr[yp];
@@ -19,7 +19,7 @@ const SelectionSort = ({ arr }) => {
 
       swap(arr, minIdx, i);
     }
-    document.querySelector('.array').innerHTML = `<h1>${arr}</h1>`;
+    render(arr);
   }
 
   useEffect(() => {
