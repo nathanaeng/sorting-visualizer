@@ -29,7 +29,7 @@ const BubbleSort = ({ arr, render }) => {
       <div className="description-container">
         <div className="name">Bubble Sort</div>
         <div className="description">
-          Bubble sort is a simple in-place sorting algorithm which repeatedly swaps adjacent elements if they are in the wrong order. Although the average time complexity is the same as algorithms such as selection sort, bubble sort becomes increasingly inefficient with larger arrays.
+          Bubble sort is a simple in-place, stable sorting algorithm which repeatedly swaps adjacent elements if they are in the wrong order - this creates a "bubble" as the elements are shifted to the top of the array. Although the average time complexity is the same as algorithms such as selection sort, bubble sort becomes increasingly inefficient with larger arrays.
         </div>
         <div className="complexity">Average time complexity: O(n<sup>2</sup>)</div>
         <div className="complexity">Worst-case time complexity: O(n<sup>2</sup>)</div>

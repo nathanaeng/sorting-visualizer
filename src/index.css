@@ -58,8 +58,8 @@ code {
 
 .bar {
   background-color: red;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin-left: 1px;
+  margin-right: 1px;
 }
 
 .array-grid {

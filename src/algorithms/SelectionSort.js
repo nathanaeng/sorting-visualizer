@@ -13,7 +13,6 @@ const SelectionSort = ({ arr, render }) => {
           minIdx = j;
         }
       }
-
       // Delay swap animation
       await new Promise(resolve => setTimeout(resolve, dur));
       swap(arr, minIdx, i);
@@ -32,7 +31,7 @@ const SelectionSort = ({ arr, render }) => {
       <div className="description-container">
         <div className="name">Selection Sort</div>
         <div className="description">
-          Selection sort is an in-place sorting algorithm which maintains 2 partitions: unsorted and sorted. Selection sort repeatedly finds the minimum element from the unsorted partition and puts it in the leftmost position (assuming ascending-order) of the sorted partition by swapping.
+          Selection sort is an in-place, non-stable sorting algorithm which maintains 2 partitions: unsorted and sorted. Selection sort repeatedly finds the minimum element from the unsorted partition and puts it in the leftmost position (assuming ascending-order) of the sorted partition by swapping. This is the most common method of sorting playing cards in your hand.
         </div>
         <div className="complexity">Average time complexity: O(n<sup>2</sup>)</div>
         <div className="complexity">Worst-case time complexity: O(n<sup>2</sup>)</div>

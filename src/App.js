@@ -41,6 +41,7 @@ function App() {
   useEffect(() => {
     const temp = [...array];
     renderArray(temp);
+    // updateArray() instead?
   }, [algorithm]);
 
   return (
