@@ -44,7 +44,7 @@ const QuickSort = ({ arr, render }) => {
       <div className="description-container">
         <div className="name">Quick Sort</div>
         <div className="description">
-          Quick sort is an in-place, un-stable divide and conquer sorting algorithm. It picks a pivot element and partitions the array into a high and low partition about the pivot element. Selecting the pivot element can be done in several ways:
+          Quick sort is an in-place, unstable divide and conquer sorting algorithm. It picks a pivot element and partitions the array into a high and low partition about the pivot element. Selecting the pivot element can be done in several ways:
           <br></br>
           <br></br>
           1. Pick the first element<br></br>
