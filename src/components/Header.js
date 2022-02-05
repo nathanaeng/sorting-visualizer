@@ -4,7 +4,7 @@ import { GrRefresh } from 'react-icons/gr';
 import { useEffect } from 'react/cjs/react.development';
 
 const Header = ({ updateArray, updateAlgorithm, updateSize }) => {
-    const algorithms = ["Selection Sort", "Bubble Sort", "Insertion Sort", "Quick Sort", "Merge Sort", "Heap Sort", "Counting Sort", "Radix Sort"];
+    const algorithms = ["Selection Sort", "Bubble Sort", "Insertion Sort", "Quick Sort", "Merge Sort", "Heap Sort"];
     const sizes = ["Size 5", "Size 10", "Size 25", "Size 50", "Size 100"];
 
     useEffect(() => {
