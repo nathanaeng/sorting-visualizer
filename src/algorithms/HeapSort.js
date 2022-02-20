@@ -1,29 +1,28 @@
 import React from 'react';
-import { useEffect } from 'react';
 import { swap } from './swap';
 
-const HeapSort = ({ arr, render }) => {
+const HeapSort = ({ arr, setFrames }) => {
   let dur = 30;
+  const frames = [];
+  frames.push([...arr]);
 
-  async function heapSort(arr) {
+  function heapSort(arr) {
     let n = arr.length;
  
     // Build max heap
     for (var i = Math.floor(n / 2) - 1; i >= 0; i--)
-      await heapify(arr, n, i);
+      heapify(arr, n, i);
 
     // Heap sort
     for (var i = n - 1; i > 0; i--) {
-      await new Promise(resolve => setTimeout(resolve, dur));
       swap(arr, 0, i);
-      render(arr);
+      frames.push([...arr]);
       // Heapify root element to get highest element at root again
-      await heapify(arr, i, 0);
+      heapify(arr, i, 0);
     }
-    setTimeout(() => render(arr), 0);
   }
 
-  async function heapify(arr, n, i) {
+  function heapify(arr, n, i) {
     // Find largest among root, left, and right child
     let largest = i;
     let left = 2 * i + 1;
@@ -37,18 +36,18 @@ const HeapSort = ({ arr, render }) => {
 
     // Swap and recursively heapify if root is not largest
     if (largest != i) {
-      await new Promise(resolve => setTimeout(resolve, dur));
       swap(arr, i, largest);
-      render(arr);
-      await heapify(arr, n, largest);
+      frames.push([...arr]);
+      heapify(arr, n, largest);
     }
 }
 
-  useEffect(() => {
-    document.querySelector('.play').addEventListener('click', () => {
-      heapSort(arr);
-    });
-  });
+  function play() {
+    heapSort(arr);
+    setFrames(frames, dur);
+  }
+
+  document.querySelector('.play').onclick = play;
 
   return(
     <div className="center">

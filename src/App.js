@@ -1,16 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Component, setState } from 'react';
 import ReactDOM from 'react-dom';
 import Header from './components/Header';
 import Controls from './components/Controls';
 import MyArray from './components/MyArray';
 import Algorithm from './components/Algorithm';
 
-function App() {
-  const [array, setArray] = useState(Array.from({length: 5}, () => Math.floor(Math.random() * 100)));
-  const [size, setSize] = useState(5);
-  const [algorithm, setAlgorithm] = useState("Choose Algorithm");
+class App extends Component {
+  state = {
+    array: [],
+    size: 5,
+    algorithm: "Choose Algorithm",
+    frames: []
+  };
 
-  function updateAlgorithm(alg) {
+  componentDidMount() {
+    this.updateArray();
+  }
+
+  updateAlgorithm = (algorithm) => {
     // Remove previous sort binding
     let play = document.querySelector('.play');
     play.replaceWith(play.cloneNode(true));
@@ -18,47 +25,53 @@ function App() {
     // Remove alert if any
     ReactDOM.unmountComponentAtNode(document.querySelector('.alert-root'));
 
-    setTimeout(() => setAlgorithm(alg), 0);
+    this.setState({algorithm}, this.updateArray());
   }
 
   // Update number of elements in array
-  function updateSize(n) {
-    setSize(n);
+  updateSize = (size) => {
+    this.setState({size});
+    setTimeout(() => this.updateArray(), 0);
   }
 
   // Generate new random array with values between 0-100
-  function updateArray() {
-    setArray(Array.from({length: size}, () => Math.floor(Math.random() * 100)));
-    updateAlgorithm();
-    updateAlgorithm(algorithm);
+  updateArray = () => {
+    const array = Array.from({length: this.state.size}, () => Math.floor(Math.random() * 100));
+    this.setState({array, frames: []});
+    console.log(this.state.array);
   }
 
-  // Re-render array during sorting
-  function renderArray(arr) {
-    setArray(arr);
+  // FRAMES
+  setFrames = (frames, dur) => {
+    this.setState({frames});
+    setTimeout(() => this.playFrames(dur), 0);
   }
 
-  useEffect(() => {
-    updateArray();
-  }, [size]);
+  playFrames = async (dur) => {
+    for(let i of this.state.frames) {
+      await new Promise(resolve => setTimeout(resolve, dur));
+      this.renderArray(i);
+    }
+  }
 
-  useEffect(() => {
-    const temp = [...array];
-    renderArray(temp);
-    // updateArray() instead?
-  }, [algorithm]);
+  // Render array
+  renderArray = (array) => {
+    this.setState({array});
+  }
 
-  return (
-    <div>
-      <Header updateArray={updateArray} updateAlgorithm={updateAlgorithm} updateSize={updateSize}/>
-      <div className="alert-root"></div>
-      <div className="array">
-        <MyArray arr={array} size={size}/>
+  render() {
+    return (
+      <div>
+        <Header updateArray={this.updateArray} updateAlgorithm={this.updateAlgorithm} updateSize={this.updateSize}/>
+        <div className="alert-root"></div>
+        <div className="array">
+          <MyArray arr={this.state.array} size={this.state.size}/>
+        </div>
+        <Controls />
+        <Algorithm name={this.state.algorithm} arr={[...this.state.array]} renderFrames={this.playFrames} setFrames={this.setFrames}/>
       </div>
-      <Controls />
-      <Algorithm name={algorithm} arr={array} render={renderArray}/>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;

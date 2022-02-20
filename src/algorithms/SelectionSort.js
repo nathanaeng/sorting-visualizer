@@ -1,11 +1,12 @@
 import React from 'react';
-import { useEffect } from 'react';
 import { swap } from './swap';
 
-const SelectionSort = ({ arr, render }) => {
+const SelectionSort = ({ arr, setFrames }) => {
   let dur = 100;
+  const frames = [];
+  frames.push([...arr]);
 
-  async function selectionSort(arr) {
+  function selectionSort(arr) {
     for(let i=0; i<arr.length-1; i++) {
       let minIdx = i;
       for(let j=i+1; j<arr.length; j++) {
@@ -13,18 +14,17 @@ const SelectionSort = ({ arr, render }) => {
           minIdx = j;
         }
       }
-      // Delay swap animation
-      await new Promise(resolve => setTimeout(resolve, dur));
       swap(arr, minIdx, i);
-      render(arr);
+      frames.push([...arr]);
     }
   }
 
-  useEffect(() => {
-    document.querySelector('.play').addEventListener('click', () => {
-      selectionSort(arr);
-    });
-  });
+  function play() {
+    selectionSort(arr);
+    setFrames(frames, dur);
+  }
+
+  document.querySelector('.play').onclick = play;
 
   return(
     <div className="center">

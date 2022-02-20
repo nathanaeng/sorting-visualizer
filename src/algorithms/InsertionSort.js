@@ -1,10 +1,11 @@
 import React from 'react';
-import { useEffect } from 'react';
 
-const InsertionSort = ({ arr, render }) => {
+const InsertionSort = ({ arr, setFrames }) => {
   let dur = 100;
+  const frames = [];
+  frames.push([...arr]); 
 
-  async function insertionSort(arr) {    
+  function insertionSort(arr) {   
     let key, j;
     for(let i=1; i<arr.length; i++) {
       key = arr[i];
@@ -14,18 +15,17 @@ const InsertionSort = ({ arr, render }) => {
         arr[j+1] = arr[j];
         j -= 1;
       }
-      await new Promise(resolve => setTimeout(resolve, dur));
       arr[j+1] = key;
-      render(arr);
+      frames.push([...arr]);
     }
-
   }
 
-  useEffect(() => {
-    document.querySelector('.play').addEventListener('click', () => {
-      insertionSort(arr);
-    });
-  });
+  function play() {
+    insertionSort(arr);
+    setFrames(frames, dur);
+  }
+
+  document.querySelector('.play').onclick = play;
 
   return(
     <div className="center">

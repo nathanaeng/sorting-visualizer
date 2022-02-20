@@ -1,43 +1,42 @@
 import React from 'react';
-import { useEffect } from 'react';
 import { swap } from './swap';
 
-const QuickSort = ({ arr, render }) => {
+const QuickSort = ({ arr, setFrames }) => {
   let dur = 30;
+  const frames = [];
+  frames.push([...arr]);
 
-  async function quickSort(arr, low, high) {
+  function quickSort(arr, low, high) {
     if(low < high) {
-      let part = await partition(arr, low, high);
+      let part = partition(arr, low, high);
 
       quickSort(arr, low, part-1);
       quickSort(arr, part+1, high);
     }
-    setTimeout(() => render(arr), 0);
   }
 
-  async function partition(arr, low, high) {
+  function partition(arr, low, high) {
     let pivot = arr[high];
     let i = low-1;
 
     for(let j=low; j <= high-1; j++) {
       if(arr[j] < pivot) {
         i++;
-        await new Promise(resolve => setTimeout(resolve, dur));
         swap(arr, i, j);
-        render(arr);
+        frames.push([...arr]);
       }
     }
-    await new Promise(resolve => setTimeout(resolve, dur));
     swap(arr, i+1, high);
-    render(arr);
+    frames.push([...arr]);
     return i+1;
   }
 
-  useEffect(() => {
-    document.querySelector('.play').addEventListener('click', () => {
-      quickSort(arr, 0, arr.length-1);
-    });
-  });
+  function play() {
+    quickSort(arr, 0, arr.length-1);
+    setFrames(frames, dur);
+  }
+
+  document.querySelector('.play').onclick = play;
 
   return(
     <div className="center">

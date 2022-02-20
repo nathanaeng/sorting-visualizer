@@ -1,21 +1,21 @@
 import React from 'react';
-import { useEffect } from 'react';
 
-const MergeSort = ({ arr, render }) => {
+const MergeSort = ({ arr, setFrames }) => {
   let dur = 30;
+  const frames = [];
+  frames.push([...arr]);
 
-  async function mergeSort(arr, l, r) {
-    if(l>=r){
+  function mergeSort(arr, l, r) {
+    if(l>=r) {
         return;
     }
     var m = l + parseInt((r-l)/2);
-    await mergeSort(arr,l,m);
-    await mergeSort(arr,m+1,r);
-    await merge(arr,l,m,r);
-    setTimeout(() => render(arr), 0);
-}
+    mergeSort(arr,l,m);
+    mergeSort(arr,m+1,r);
+    merge(arr,l,m,r);
+  }
 
-  async function merge(arr, l, m, r) {
+  function merge(arr, l, m, r) {
     var n1 = m - l + 1;
     var n2 = r - m;
   
@@ -32,15 +32,13 @@ const MergeSort = ({ arr, render }) => {
     var k = l;
     while (i < n1 && j < n2) {
       if (L[i] <= R[j]) {
-        await new Promise(resolve => setTimeout(resolve, dur));
         arr[k] = L[i];
-        render(arr);
+        frames.push([...arr]);
         i++;
       }
       else {
-        await new Promise(resolve => setTimeout(resolve, dur));
         arr[k] = R[j];
-        render(arr);
+        frames.push([...arr]);
         j++;
       }
       k++;
@@ -58,11 +56,12 @@ const MergeSort = ({ arr, render }) => {
     }
   }
 
-  useEffect(() => {
-    document.querySelector('.play').addEventListener('click', () => {
-      mergeSort(arr, 0, arr.length-1);
-    });
-  });
+  function play() {
+    mergeSort(arr, 0, arr.length-1);
+    setFrames(frames, dur);
+  }
+
+  document.querySelector('.play').onclick = play;
 
   return(
     <div className="center">

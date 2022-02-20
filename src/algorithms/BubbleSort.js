@@ -1,28 +1,28 @@
 import React from 'react';
-import { useEffect } from 'react';
 import { swap } from './swap';
 
-const BubbleSort = ({ arr, render }) => {
+const BubbleSort = ({ arr, setFrames }) => {
   let dur = 50;
+  const frames = [];
+  frames.push([...arr]);
 
-  async function bubbleSort(arr) {
+  function bubbleSort(arr) {
     for(let i=0; i<arr.length-1; i++) {
       for(let j=0; j<arr.length-i-1; j++) {
         if(arr[j] > arr[j+1]) {
-          // Delay swap animation
-          await new Promise(resolve => setTimeout(resolve, dur));
           swap(arr, j, j+1);
-          render(arr);
+          frames.push([...arr]);
         }
       }
     }
   }
 
-  useEffect(() => {
-    document.querySelector('.play').addEventListener('click', () => {
-      bubbleSort(arr);
-    });
-  });
+  function play() {
+    bubbleSort(arr);
+    setFrames(frames, dur);
+  }
+
+  document.querySelector('.play').onclick = play;
 
   return(
     <div className="center">

@@ -7,24 +7,24 @@ import QuickSort from '../algorithms/QuickSort';
 import MergeSort from '../algorithms/MergeSort';
 import HeapSort from '../algorithms/HeapSort';
 
-const Algorithm = ({ name, arr, render }) => {
+const Algorithm = ({ name, arr, setFrames }) => {
     if(name === "Selection Sort") {
-            return(<SelectionSort arr={arr} render={render}/>);
-        } else if(name === "Bubble Sort") { 
-            return(<BubbleSort arr={arr} render={render}/>);
-        } else if(name === "Insertion Sort") { 
-            return(<InsertionSort arr={arr} render={render}/>);
-        } else if(name === "Quick Sort") { 
-            return(<QuickSort arr={arr} render={render}/>);
-        } else if(name === "Merge Sort") { 
-            return(<MergeSort arr={arr} render={render}/>);
-        } else if(name === "Heap Sort") { 
-            return(<HeapSort arr={arr} render={render}/>);
-        } else if(name === "Choose Algorithm") {
-            return(<NoneSelected/>);
-        } else {
-            return null;
-        }
-    };
+        return(<SelectionSort arr={arr} setFrames={setFrames}/>);
+    } else if(name === "Bubble Sort") { 
+        return(<BubbleSort arr={arr} setFrames={setFrames}/>);
+    } else if(name === "Insertion Sort") { 
+        return(<InsertionSort arr={arr} setFrames={setFrames}/>);
+    } else if(name === "Quick Sort") { 
+        return(<QuickSort arr={arr} setFrames={setFrames}/>);
+    } else if(name === "Merge Sort") { 
+        return(<MergeSort arr={arr} setFrames={setFrames}/>);
+    } else if(name === "Heap Sort") { 
+        return(<HeapSort arr={arr} setFrames={setFrames}/>);
+    } else if(name === "Choose Algorithm") {
+        return(<NoneSelected/>);
+    } else {
+        return null;
+    }
+};
 
 export default Algorithm;
