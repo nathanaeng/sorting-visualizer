@@ -58,8 +58,10 @@ class App extends Component {
       for(let i=this.state.frameIndex+1; i<this.state.frames.length; i++) {
         if(this.state.playing === true) {
           await new Promise(resolve => setTimeout(resolve, 100));
-          this.renderArray(this.state.frames[i]);
-          this.setState({frameIndex: this.state.frameIndex + 1}); // does order matter?
+          if(this.state.playing === true) {
+            this.renderArray(this.state.frames[i]);
+            this.setState({frameIndex: this.state.frameIndex + 1}); // does order matter?
+          }
         }
       }
       this.setState({frameIndex: this.state.frameIndex - 1});
