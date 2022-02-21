@@ -5,7 +5,13 @@ const GitHub = () => {
     document.querySelector('.form-select').value = 'Choose Algorithm';
   }
   
-  return(<a className="github" href="https://github.com/nathanaeng/sorting-visualizer" onClick={resetSelect}>GitHub</a>);
+  return(
+    <div className="center">
+      <div className="github-container">
+        <a className="github" href="https://github.com/nathanaeng/sorting-visualizer" onClick={resetSelect}>GitHub</a>
+      </div>
+    </div>
+  );
 };
 
 export default GitHub;

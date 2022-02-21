@@ -41,8 +41,8 @@ code {
 }
 
 .timeline {
-  margin-left: 5%;
   width: 90%;
+  max-width: 1500px;
   height: 12px;
   margin-top: 2rem;
   background-color: #F8F9FA;
@@ -50,7 +50,6 @@ code {
 
 .timeline-fill {
   height: 12px;
-  margin-top: 2rem;
   background-color: red;
 }
 
@@ -131,12 +130,14 @@ code {
 .array-grid {
   height: 420px;
   width: 95%;
+  max-width: 1500px;
   display: grid;
   transform: scaleY(-1);
 }
 
 .array-background {
   height: 440px;
+  max-width: 1500px;
   background-color: #F8F9FA;
   display: flex;
   justify-content: center;
@@ -145,6 +146,7 @@ code {
 .description-container {
   height: auto;
   width: 90%;
+  max-width: 1500px;
   background-color: #F8F9FA;
   display: grid;
   grid-template-columns: repeat(2, rf);
@@ -179,11 +181,17 @@ code {
   margin-bottom: 1rem;
 }
 
+.github-container {
+  height: auto;
+  width: 90%;
+  max-width: 1500px;
+  display: grid;
+  grid-template-columns: repeat(2, rf);
+  column-gap: 5rem;
+  margin-bottom: 3rem;
+}
+
 .github {
-  display: block;
-  width: 20px;
-  margin-bottom: 5%;
-  margin-left: 5%;
   font-size: 1.5rem;
   color: black;
   text-decoration: none;
