@@ -43,13 +43,13 @@ code {
 .timeline {
   margin-left: 5%;
   width: 90%;
-  height: 10px;
+  height: 12px;
   margin-top: 2rem;
   background-color: #F8F9FA;
 }
 
 .timeline-fill {
-  height: 10px;
+  height: 12px;
   margin-top: 2rem;
   background-color: red;
 }
@@ -66,6 +66,10 @@ code {
   border: none;
   background-color: transparent;
   grid-column: 2;
+}
+
+.prev:active {
+  transform: scale(1.1);
 }
 
 .play {
@@ -91,11 +95,19 @@ code {
   grid-column: 4;
 }
 
+.next:active {
+  transform: scale(1.1);
+}
+
 .speed {
   border: none;
   background-color: transparent;
   font-size: 25px;
   grid-column: 5;
+}
+
+.speed:active {
+  transform: scale(1.1);
 }
 
 .reset {
@@ -104,6 +116,10 @@ code {
   font-size: 25px;
   grid-column: 1;
   margin-bottom: 0.3rem;
+}
+
+.reset:active {
+  transform: scale(1.1);
 }
 
 .bar {
@@ -161,6 +177,16 @@ code {
 
 .description-bottom {
   margin-bottom: 1rem;
+}
+
+.github {
+  display: block;
+  width: 20px;
+  margin-bottom: 5%;
+  margin-left: 5%;
+  font-size: 1.5rem;
+  color: black;
+  text-decoration: none;
 }
 
 @media (max-width: 700px) {

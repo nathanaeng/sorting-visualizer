@@ -5,6 +5,7 @@ import Controls from './components/Controls';
 import MyArray from './components/MyArray';
 import Algorithm from './components/Algorithm';
 import Timeline from './components/Timeline';
+import GitHub from './components/GitHub';
 
 class App extends Component {
   state = {
@@ -149,6 +150,7 @@ class App extends Component {
         <Timeline index={this.state.frameIndex} length={this.state.frames.length}/>
         <Controls back={this.frameBack} play={this.playFrames} next={this.frameNext} speed={this.state.speed} toggleSpeed={this.toggleSpeed} reset={this.reset} playing={this.state.playing}/>
         <Algorithm name={this.state.algorithm} arr={[...this.state.array]} renderFrames={this.playFrames} setFrames={this.setFrames}/>
+        <GitHub/>
       </div>
     );
   }
