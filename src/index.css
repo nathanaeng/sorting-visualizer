@@ -23,6 +23,7 @@ code {
 
 .refresh {
   cursor: pointer;
+  margin-left: 0.62rem;
 }
 
 .alert-root {
@@ -55,7 +56,7 @@ code {
 
 .controls {
   display: grid;
-  grid-template-columns: repeat(3, rf);
+  grid-template-columns: repeat(5, rf);
   width: 300px;
   margin-top: 2rem;
   margin-bottom: 50px;
@@ -64,35 +65,34 @@ code {
 .prev {
   border: none;
   background-color: transparent;
-  grid-column: 1;
+  grid-column: 2;
 }
 
 .play {
   border: none;
   background-color: transparent;
-  grid-column: 2;
+  grid-column: 3;
 }
 
 .next {
   border: none;
   background-color: transparent;
-  grid-column: 3;
+  grid-column: 4;
 }
 
 .speed {
-  position: absolute;
   border: none;
   background-color: transparent;
   font-size: 25px;
-  margin-left: 20rem;
+  grid-column: 5;
 }
 
 .reset {
-  position: absolute;
   border: none;
   background-color: transparent;
   font-size: 25px;
-  margin-left: -4rem;
+  grid-column: 1;
+  margin-bottom: 0.3rem;
 }
 
 .bar {
@@ -153,6 +153,10 @@ code {
 }
 
 @media (max-width: 700px) {
+  .name {
+    width: 90%;
+  }
+
   .description {
     font-size: 20px;
     margin-left: 2rem;
