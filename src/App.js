@@ -56,9 +56,11 @@ class App extends Component {
     if(this.state.playing === false) {  // disable play button spam clicking
       this.setState({playing: true});
       for(let i=this.state.frameIndex+1; i<this.state.frames.length; i++) {
-        await new Promise(resolve => setTimeout(resolve, 100));
-        this.renderArray(this.state.frames[i]);
-        this.setState({frameIndex: this.state.frameIndex + 1}); // does order matter?
+        if(this.state.playing === true) {
+          await new Promise(resolve => setTimeout(resolve, 100));
+          this.renderArray(this.state.frames[i]);
+          this.setState({frameIndex: this.state.frameIndex + 1}); // does order matter?
+        }
       }
       this.setState({frameIndex: this.state.frameIndex - 1});
       this.setState({playing: false});
@@ -66,6 +68,7 @@ class App extends Component {
   }
 
   frameBack = () => {
+    this.setState({playing: false});
     if(this.state.frameIndex > 0) {
       this.setState({frameIndex: this.state.frameIndex - 1});
       console.log(this.state.frameIndex);
@@ -74,6 +77,7 @@ class App extends Component {
   }
 
   frameNext = () => {
+    this.setState({playing: false});
     if(this.state.frameIndex < this.state.frames.length-1) {
       this.setState({frameIndex: this.state.frameIndex + 1});
       console.log(this.state.frameIndex);
