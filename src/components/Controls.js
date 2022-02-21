@@ -9,7 +9,16 @@ const Controls = ({ back, play, next, speed, toggleSpeed, reset, playing }) => {
     } else {
       document.querySelector('.play').classList.remove('pause');
     }
+
+    document.querySelector('.controls').onclick = disableHighlight;
   });
+
+  function disableHighlight() {
+    document.body.classList.add('no-highlight');
+    var reset = window.setTimeout(() => document.body.classList.remove('no-highlight'), 200);
+    window.clearTimeout(reset);
+    reset = window.setTimeout(() => document.body.classList.remove('no-highlight'), 200);
+  }
 
   return(
     <div className="center">

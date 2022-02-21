@@ -12,6 +12,14 @@ code {
     monospace;
 }
 
+.no-highlight {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
 .form-select {
   border: none;
   background-color: transparent;
@@ -46,6 +54,7 @@ code {
   height: 12px;
   margin-top: 2rem;
   background-color: #F8F9FA;
+  cursor: pointer;
 }
 
 .timeline-fill {
