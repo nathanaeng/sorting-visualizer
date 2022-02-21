@@ -54,8 +54,9 @@ code {
 }
 
 .controls {
+  margin-left: -3rem;
   display: grid;
-  grid-template-columns: repeat(5, rf);
+  grid-template-columns: repeat(5, 70px);
   width: 300px;
   margin-top: 2rem;
   margin-bottom: 50px;
@@ -65,6 +66,7 @@ code {
   border: none;
   background-color: transparent;
   grid-column: 2;
+  color: black;
 }
 
 .prev:active {
@@ -75,8 +77,6 @@ code {
   border: none;
   background-color: transparent;
   grid-column: 3;
-  width: 40px;
-  margin-left: 20px;
   background: url(./svg/play-solid.svg);
   background-repeat: no-repeat;
   background-position: center;
@@ -92,6 +92,7 @@ code {
   border: none;
   background-color: transparent;
   grid-column: 4;
+  color: black;
 }
 
 .next:active {
@@ -103,6 +104,7 @@ code {
   background-color: transparent;
   font-size: 25px;
   grid-column: 5;
+  color: black;
 }
 
 .speed:active {
