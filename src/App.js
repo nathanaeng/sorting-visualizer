@@ -21,14 +21,20 @@ class App extends Component {
   componentDidMount() {
     this.updateArray();
   }
-
+  
   updateAlgorithm = (algorithm) => {
-    // Remove previous sort binding
-    let play = document.querySelector('.play');
-    play.onclick = this.playFrames;
+    // Remove alert binding
+    if(document.querySelector('.no-alg')) {
+      let play = document.querySelector('.play');
+      play.replaceWith(play.cloneNode(true));
+    }
 
     // Remove alert if any
     ReactDOM.unmountComponentAtNode(document.querySelector('.alert-root'));
+    
+    // Remove previous sort binding
+    let play = document.querySelector('.play');
+    play.onclick = this.playFrames;
 
     this.setState({algorithm});
     setTimeout(() => this.updateArray(), 0);
@@ -85,6 +91,7 @@ class App extends Component {
   playFrames = async () => {
     if(this.state.playing === false) {  // disable play button spam clicking
       this.setState({playing: true});
+      // ReactDOM.render(<FaPause style={{fontSize: "25px"}}/>, document.querySelector('.play'));  // switch to pause button
       for(let i=this.state.frameIndex; i<this.state.frames.length; i++) {
         if(this.state.playing === true) {
           let dur = this.getSpeed();
@@ -97,6 +104,9 @@ class App extends Component {
       }
       // this.setState({frameIndex: this.state.frameIndex - 1});
       this.setState({playing: false});
+    } else {
+      this.setState({playing: false});
+      // ReactDOM.render(<FaPlay style={{fontSize: "25px"}}/>, document.querySelector('.play')); // switch to play button
     }
   }
 
@@ -137,7 +147,7 @@ class App extends Component {
           <MyArray arr={this.state.array} size={this.state.size}/>
         </div>
         <Timeline index={this.state.frameIndex} length={this.state.frames.length}/>
-        <Controls back={this.frameBack} play={this.playFrames} next={this.frameNext} speed={this.state.speed} toggleSpeed={this.toggleSpeed} reset={this.reset}/>
+        <Controls back={this.frameBack} play={this.playFrames} next={this.frameNext} speed={this.state.speed} toggleSpeed={this.toggleSpeed} reset={this.reset} playing={this.state.playing}/>
         <Algorithm name={this.state.algorithm} arr={[...this.state.array]} renderFrames={this.playFrames} setFrames={this.setFrames}/>
       </div>
     );

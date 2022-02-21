@@ -72,6 +72,17 @@ code {
   border: none;
   background-color: transparent;
   grid-column: 3;
+  width: 40px;
+  margin-left: 20px;
+  background: url(./svg/play-solid.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.pause {
+  background: url(./svg/pause-solid.svg) !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
 }
 
 .next {
