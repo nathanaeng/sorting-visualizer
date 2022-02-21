@@ -19,18 +19,20 @@ const NoneSelected = () => {
 
   useEffect(() => {
     document.querySelector('.play').addEventListener('click', () => {
-      errorMessage();
+      if(document.querySelector('.no-alg')) {
+        errorMessage();
 
-      // Remove event listener to disable spam clicks
-      let play = document.querySelector('.play');
-      play.replaceWith(play.cloneNode(true));
+        // Remove event listener to disable spam clicks
+        let play = document.querySelector('.play');
+        play.replaceWith(play.cloneNode(true));
+      }
     });
   }, [alert]);
 
   return(
     <div className="center">
       <div className="description-container">
-        <div className="name">No algorithm selected</div>
+        <div className="name no-alg">No algorithm selected</div>
         <div className="description">
           Please select a sorting algorithm from the drop-down menu at the top of the page.
         </div>

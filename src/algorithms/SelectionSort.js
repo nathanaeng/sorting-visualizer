@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { swap } from './swap';
 
 const SelectionSort = ({ arr, setFrames }) => {
@@ -21,10 +22,13 @@ const SelectionSort = ({ arr, setFrames }) => {
 
   function play() {
     selectionSort(arr);
-    setFrames(frames, dur);
+    setFrames(frames);
   }
 
-  document.querySelector('.play').onclick = play;
+  useEffect(() => play());
+  // play();
+
+  // document.querySelector('.play').onclick = play;
 
   return(
     <div className="center">
