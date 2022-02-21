@@ -1,4 +1,4 @@
-import { useEffect, useState, Component, setState } from 'react';
+import { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Header from './components/Header';
 import Controls from './components/Controls';
@@ -13,7 +13,8 @@ class App extends Component {
     frames: [],
     frameIndex: 0,
     sorted: false,
-    playing: false
+    playing: false,
+    speed: 1
   };
 
   componentDidMount() {
@@ -41,23 +42,43 @@ class App extends Component {
   updateArray = () => {
     const array = Array.from({length: this.state.size}, () => Math.floor(Math.random() * 100));
     this.setState({array, frames: [], frameIndex: 0, sorted: false, playing: false});
-    console.log(this.state.array);
+    // console.log(this.state.array);
   }
 
-  // FRAMES
+  // FRAMES/PLAYBACK
+  toggleSpeed = () => {
+    let speed = this.state.speed;
+    if(speed < 4) {
+      speed++;
+    } else {
+      speed = 1;
+    }
+    this.setState({speed: speed});
+  }
+
+  // Calculate the duration between swap animations
+  getSpeed = () => {
+    let dur;
+    if(this.state.algorithm === "Selection Sort") {
+      dur = 125 - (this.state.speed*25);
+    }
+    return dur;
+  }
+
   setFrames = (frames) => {
     if(this.state.sorted === false) {
       this.setState({frames, sorted: true});
     }
   }
 
-  playFrames = async (dur) => {
+  playFrames = async () => {
     console.log(this.state.playing);
     if(this.state.playing === false) {  // disable play button spam clicking
       this.setState({playing: true});
       for(let i=this.state.frameIndex+1; i<this.state.frames.length; i++) {
         if(this.state.playing === true) {
-          await new Promise(resolve => setTimeout(resolve, 100));
+          let dur = this.getSpeed();
+          await new Promise(resolve => setTimeout(resolve, dur));
           if(this.state.playing === true) {
             this.renderArray(this.state.frames[i]);
             this.setState({frameIndex: this.state.frameIndex + 1}); // does order matter?
@@ -100,7 +121,7 @@ class App extends Component {
         <div className="array">
           <MyArray arr={this.state.array} size={this.state.size}/>
         </div>
-        <Controls back={this.frameBack} play={this.playFrames} next={this.frameNext}/>
+        <Controls back={this.frameBack} play={this.playFrames} next={this.frameNext} speed={this.state.speed} toggleSpeed={this.toggleSpeed}/>
         <Algorithm name={this.state.algorithm} arr={[...this.state.array]} renderFrames={this.playFrames} setFrames={this.setFrames}/>
       </div>
     );
