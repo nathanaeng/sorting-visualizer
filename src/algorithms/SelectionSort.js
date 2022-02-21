@@ -1,9 +1,7 @@
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import { swap } from './swap';
 
 const SelectionSort = ({ arr, setFrames }) => {
-  let dur = 100;
   const frames = [];
   frames.push([...arr]);
 
@@ -25,10 +23,7 @@ const SelectionSort = ({ arr, setFrames }) => {
     setFrames(frames);
   }
 
-  useEffect(() => play());
-  // play();
-
-  // document.querySelector('.play').onclick = play;
+  useLayoutEffect(() => play());
 
   return(
     <div className="center">

@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 
 const InsertionSort = ({ arr, setFrames }) => {
-  let dur = 100;
   const frames = [];
   frames.push([...arr]); 
 
@@ -22,10 +21,10 @@ const InsertionSort = ({ arr, setFrames }) => {
 
   function play() {
     insertionSort(arr);
-    setFrames(frames, dur);
+    setFrames(frames);
   }
 
-  document.querySelector('.play').onclick = play;
+  useLayoutEffect(() => play());
 
   return(
     <div className="center">

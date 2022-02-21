@@ -8,8 +8,6 @@ import MergeSort from '../algorithms/MergeSort';
 import HeapSort from '../algorithms/HeapSort';
 
 const Algorithm = ({ name, arr, setFrames }) => {
-    // console.log(name);
-
     if(name === "Selection Sort") {
         return(<SelectionSort arr={arr} setFrames={setFrames}/>);
     } else if(name === "Bubble Sort") { 

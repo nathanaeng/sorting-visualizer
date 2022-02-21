@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { swap } from './swap';
 
 const BubbleSort = ({ arr, setFrames }) => {
-  let dur = 50;
   const frames = [];
   frames.push([...arr]);
 
@@ -19,10 +18,10 @@ const BubbleSort = ({ arr, setFrames }) => {
 
   function play() {
     bubbleSort(arr);
-    setFrames(frames, dur);
+    setFrames(frames);
   }
 
-  document.querySelector('.play').onclick = play;
+  useLayoutEffect(() => play());
 
   return(
     <div className="center">

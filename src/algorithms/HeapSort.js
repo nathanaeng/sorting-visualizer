@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { swap } from './swap';
 
 const HeapSort = ({ arr, setFrames }) => {
-  let dur = 30;
   const frames = [];
   frames.push([...arr]);
 
@@ -44,10 +43,10 @@ const HeapSort = ({ arr, setFrames }) => {
 
   function play() {
     heapSort(arr);
-    setFrames(frames, dur);
+    setFrames(frames);
   }
 
-  document.querySelector('.play').onclick = play;
+  useLayoutEffect(() => play());
 
   return(
     <div className="center">

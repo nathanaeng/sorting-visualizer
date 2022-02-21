@@ -14,7 +14,7 @@ class App extends Component {
     frameIndex: 0,
     sorted: false,
     playing: false,
-    speed: 1
+    speed: 0
   };
 
   componentDidMount() {
@@ -29,7 +29,8 @@ class App extends Component {
     // Remove alert if any
     ReactDOM.unmountComponentAtNode(document.querySelector('.alert-root'));
 
-    this.setState({algorithm}, this.updateArray());
+    this.setState({algorithm});
+    setTimeout(() => this.updateArray(), 0);
   }
 
   // Update number of elements in array
@@ -48,10 +49,10 @@ class App extends Component {
   // FRAMES/PLAYBACK
   toggleSpeed = () => {
     let speed = this.state.speed;
-    if(speed < 4) {
+    if(speed < 3) {
       speed++;
     } else {
-      speed = 1;
+      speed = 0;
     }
     this.setState({speed: speed});
   }
@@ -60,7 +61,17 @@ class App extends Component {
   getSpeed = () => {
     let dur;
     if(this.state.algorithm === "Selection Sort") {
-      dur = 125 - (this.state.speed*25);
+      dur = 100 - (this.state.speed*25);
+    } else if(this.state.algorithm === "Bubble Sort") {
+      dur = 50 - (this.state.speed*50);
+    } else if(this.state.algorithm === "Insertion Sort") {
+      dur = 125 - (this.state.speed*35);
+    } else if (this.state.algorithm === "Quick Sort") {
+      dur = 40 - (this.state.speed*13);
+    } else if (this.state.algorithm === "Merge Sort") {
+      dur = 40 - (this.state.speed*13);
+    } else if(this.state.algorithm === "Heap Sort") {
+      dur = 40 - (this.state.speed*13);
     }
     return dur;
   }
@@ -81,7 +92,7 @@ class App extends Component {
           await new Promise(resolve => setTimeout(resolve, dur));
           if(this.state.playing === true) {
             this.renderArray(this.state.frames[i]);
-            this.setState({frameIndex: this.state.frameIndex + 1}); // does order matter?
+            this.setState({frameIndex: this.state.frameIndex + 1});
           }
         }
       }

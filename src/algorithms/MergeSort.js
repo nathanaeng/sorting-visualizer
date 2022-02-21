@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 
 const MergeSort = ({ arr, setFrames }) => {
-  let dur = 30;
   const frames = [];
   frames.push([...arr]);
 
@@ -58,10 +57,10 @@ const MergeSort = ({ arr, setFrames }) => {
 
   function play() {
     mergeSort(arr, 0, arr.length-1);
-    setFrames(frames, dur);
+    setFrames(frames);
   }
 
-  document.querySelector('.play').onclick = play;
+  useLayoutEffect(() => play());
 
   return(
     <div className="center">
