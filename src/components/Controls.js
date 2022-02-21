@@ -13,14 +13,14 @@ const Controls = ({ back, play, next, speed, toggleSpeed, reset, playing }) => {
 
   function disableHighlight() {
     document.body.classList.add('no-highlight');
-    var reset = window.setTimeout(() => document.body.classList.remove('no-highlight'), 200);
+    var reset = window.setTimeout(() => document.body.classList.remove('no-highlight'), 300);
     window.clearTimeout(reset);
-    reset = window.setTimeout(() => document.body.classList.remove('no-highlight'), 200);
+    reset = window.setTimeout(() => document.body.classList.remove('no-highlight'), 300);
   }
 
   return(
-    <div className="center" onClick={disableHighlight}>
-        <div className="controls">
+    <div className="center">
+        <div className="controls" onClick={disableHighlight}>
             <button className="reset" onClick={reset}><GrRefresh/></button>
             <button className="prev" onClick={back}><BsFillSkipStartFill style={{fontSize: "40px"}}/></button>
             <button className="play" onClick={play}></button>
