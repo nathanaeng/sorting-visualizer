@@ -63,7 +63,7 @@ code {
 }
 
 .controls {
-  margin-left: -3rem;
+  justify-content: center;
   display: grid;
   grid-template-columns: repeat(5, 70px);
   width: 300px;
@@ -86,15 +86,7 @@ code {
   border: none;
   background-color: transparent;
   grid-column: 3;
-  background: url(./svg/play-solid.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.pause {
-  background: url(./svg/pause-solid.svg) !important;
-  background-repeat: no-repeat !important;
-  background-position: center !important;
+  color: black;
 }
 
 .next {
