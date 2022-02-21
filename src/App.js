@@ -92,7 +92,6 @@ class App extends Component {
   playFrames = async () => {
     if(this.state.playing === false) {  // disable play button spam clicking
       this.setState({playing: true});
-      // ReactDOM.render(<FaPause style={{fontSize: "25px"}}/>, document.querySelector('.play'));  // switch to pause button
       for(let i=this.state.frameIndex; i<this.state.frames.length; i++) {
         if(this.state.playing === true) {
           let dur = this.getSpeed();
@@ -103,11 +102,9 @@ class App extends Component {
           }
         }
       }
-      // this.setState({frameIndex: this.state.frameIndex - 1});
       this.setState({playing: false});
     } else {
       this.setState({playing: false});
-      // ReactDOM.render(<FaPlay style={{fontSize: "25px"}}/>, document.querySelector('.play')); // switch to play button
     }
   }
 
