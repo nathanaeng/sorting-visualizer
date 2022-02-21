@@ -115,7 +115,7 @@ class App extends Component {
     this.setState({playing: false});
     if(this.state.frameIndex > 1) {
       this.setState({frameIndex: this.state.frameIndex - 1});
-      this.renderArray(this.state.frames[this.state.frameIndex-1]);
+      this.renderArray(this.state.frames[this.state.frameIndex-2]);
     }
   }
 
