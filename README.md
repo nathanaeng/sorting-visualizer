@@ -1,6 +1,9 @@
 # [Sorting Visualizer](https://nathanaeng.github.io/sorting-visualizer/)
 I wanted to brush up on my sorting algorithms knowledge as well as practice some React, so I made a neat little [sorting visualizer website](https://nathanaeng.github.io/sorting-visualizer/).
 
+<a href="#">![](img/webpage.png)</a>
+
+## Algorithms
 Algorithms included are:
 - Selection Sort
 - Bubble Sort
