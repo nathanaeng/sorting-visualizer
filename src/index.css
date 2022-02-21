@@ -39,6 +39,20 @@ code {
   justify-content: center;
 }
 
+.timeline {
+  margin-left: 5%;
+  width: 90%;
+  height: 10px;
+  margin-top: 2rem;
+  background-color: #F8F9FA;
+}
+
+.timeline-fill {
+  height: 10px;
+  margin-top: 2rem;
+  background-color: red;
+}
+
 .controls {
   display: grid;
   grid-template-columns: repeat(3, rf);
@@ -71,6 +85,14 @@ code {
   background-color: transparent;
   font-size: 25px;
   margin-left: 20rem;
+}
+
+.reset {
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  font-size: 25px;
+  margin-left: -4rem;
 }
 
 .bar {
