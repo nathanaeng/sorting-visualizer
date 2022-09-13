@@ -53,6 +53,7 @@ const MergeSort = ({ arr, setFrames }) => {
       j++;
       k++;
     }
+    frames.push([...arr]);
   }
 
   function play() {
